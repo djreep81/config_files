@@ -1,0 +1,7 @@
+
+
+"\e[A": history-search-backward            # arrow up
+"\e[B": history-search-forward             # arrow down
+
+# vim mode in bash
+set editing-mode vi
