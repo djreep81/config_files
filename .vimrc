@@ -5,35 +5,52 @@ filetype off                   " required!
 syntax on                       " colors
 set encoding=utf-8
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" PlugUpdate (update plugins)
+" PlugUgrade (update plug itself)
+call plug#begin()
+Plug 'tpope/vim-sensible'
+Plug 'scrooloose/nerdtree'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-fugitive'
+Plug 'majutsushi/tagbar'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ngmy/vim-rubocop'
+Plug 'kchmck/vim-coffee-script'
+Plug 'airblade/vim-gitgutter' 
+call plug#end()
 
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" Plugin 'VundleVim/Vundle.vim'
 " to update, run :PluginUpdate
 " when adding new Plugin, run :PluginInstall
-Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-fugitive'
 " Plugin 'Rip-Rip/clang_complete'  -- replacing clang_complete with youcompleteme
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/nerdtree'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'majutsushi/tagbar'
-Plugin 'vim-scripts/a.vim'
-Plugin 'Align'
-Plugin 'vim-scripts/Colour-Sampler-Pack'
-Plugin 'vim-scripts/guicolorscheme.vim'
-Plugin 'vim-scripts/c.vim'
+" Plugin 'Valloric/YouCompleteMe'
+" Plugin 'scrooloose/nerdtree'
+" Plugin 'altercation/vim-colors-solarized'
+" Plugin 'majutsushi/tagbar'
+" Plugin 'vim-scripts/a.vim'
+"Plugin 'Align'
+"Plugin 'vim-scripts/Colour-Sampler-Pack'
+"Plugin 'vim-scripts/guicolorscheme.vim'
+"Plugin 'vim-scripts/c.vim'
 " Plugin 'fholgado/minibufexpl.vim'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'msanders/snipmate.vim'
+"Plugin 'Chiel92/vim-autoformat'
+"Plugin 'msanders/snipmate.vim'
 " Plugin 'Lokaltog/vim-powerline' " -- replacing with vim-airline
 " Plugin 'bling/vim-airline'      " -- vim-airline moved git and split themes
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'edkolev/tmuxline.vim'
 "use abolish as '%s' for %Subvert
-Plugin 'tpope/tpope-vim-abolish'
-call vundle#end()
+"Plugin 'tpope/tpope-vim-abolish'
+"Plugin 'ngmy/vim-rubocop'
+"Plugin 'kchmck/vim-coffee-script'
+"Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"call vundle#end()
 
 " NerdTree Toggle
 nmap <F6> :NERDTreeToggle<CR>
@@ -45,12 +62,14 @@ nmap <F6> :NERDTreeToggle<CR>
 syntax enable
 set background=dark
 "do not define solarized_termcolors (not working)
-"let g:solarized_termcolors=256 (switched to 8 needed)
+let g:solarized_termcolors=256
 "let g:solarized_termcolors=8
 set t_Co=256
 colorscheme solarized
 
 let g:clang_complete_copen = 1
+let g:vimrubocop_config = '~/app/.rubocop.yml'
+let g:go_version_warning = 0
 
 "These settings will result in spaces being used for all indentation
 set expandtab
