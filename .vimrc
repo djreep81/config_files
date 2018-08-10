@@ -7,17 +7,20 @@ set encoding=utf-8
 
 " PlugUpdate (update plugins)
 " PlugUgrade (update plug itself)
+" PlugInstall (install new plugs)
 call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdtree'
-Plug 'altercation/vim-colors-solarized'
-Plug 'tpope/vim-fugitive'
-Plug 'majutsushi/tagbar'
+Plug 'altercation/vim-colors-solarized'                 " solar theme
+Plug 'majutsushi/tagbar'                                " tag file structure
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ngmy/vim-rubocop'
 Plug 'kchmck/vim-coffee-script'
-Plug 'airblade/vim-gitgutter' 
+Plug 'tpope/vim-fugitive'                               " Gdiff, Gw
+Plug 'airblade/vim-gitgutter'                           " git +/~ gutter
+Plug 'Chiel92/vim-autoformat'                           " AutoFormat
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }      " Go plugin
 call plug#end()
 
 "set rtp+=~/.vim/bundle/Vundle.vim
