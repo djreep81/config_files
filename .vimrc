@@ -15,6 +15,7 @@ Plug 'altercation/vim-colors-solarized'                 " solar theme
 Plug 'majutsushi/tagbar'                                " tag file structure
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
 Plug 'ngmy/vim-rubocop'
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-fugitive'                               " Gdiff, Gw
@@ -118,7 +119,12 @@ let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_symbols.space = "\ua0"
+
+" tmuxline configuration that should modify tmux status line config file
+let g:tmuxline_preset = 'nightly_fox'
+let g:airline#extensions#tmuxline#enabled = 1
+let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
+
 
 " Tagbar to display functions/methods/etc
 nmap <F8> :TagbarToggle<CR>
