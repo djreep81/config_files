@@ -64,9 +64,8 @@ nmap <F6> :NERDTreeToggle<CR>
 
 syntax enable
 set background=dark
-"do not define solarized_termcolors (not working)
-let g:solarized_termcolors=256
-"let g:solarized_termcolors=8
+" only use for mac
+" let g:solarized_termcolors=256 
 set t_Co=256
 colorscheme solarized
 
