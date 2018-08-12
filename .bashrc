@@ -12,6 +12,9 @@
 
 export EDITOR="vim" 
 
+source /usr/share/fzf/key-bindings.bash
+source /usr/share/fzf/completion.bash
+
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1

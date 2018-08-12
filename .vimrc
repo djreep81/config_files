@@ -22,6 +22,7 @@ Plug 'tpope/vim-fugitive'                               " Gdiff, Gw
 Plug 'airblade/vim-gitgutter'                           " git +/~ gutter
 Plug 'Chiel92/vim-autoformat'                           " AutoFormat
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }      " Go plugin
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 "set rtp+=~/.vim/bundle/Vundle.vim
