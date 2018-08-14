@@ -15,7 +15,7 @@ Plug 'altercation/vim-colors-solarized'                 " solar theme
 Plug 'majutsushi/tagbar'                                " tag file structure
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/tmuxline.vim'
+Plug 'edkolev/tmuxline.vim'                             " writes to .tmux-status.conf
 Plug 'ngmy/vim-rubocop'
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-fugitive'                               " Gdiff, Gw
