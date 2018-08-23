@@ -15,12 +15,14 @@ Plug 'altercation/vim-colors-solarized'                 " solar theme
 Plug 'majutsushi/tagbar'                                " tag file structure
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/tmuxline.vim'                             " writes to .tmux-status.conf
+Plug 'edkolev/tmuxline.vim'                             " writes to .tmux-status.conf for tmux
+Plug 'edkolev/promptline.vim'                           " writes to .promptline.sh for bash
 Plug 'ngmy/vim-rubocop'
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-fugitive'                               " Gdiff, Gw
 Plug 'airblade/vim-gitgutter'                           " git +/~ gutter
 Plug 'Chiel92/vim-autoformat'                           " AutoFormat
+Plug 'vim-syntastic/syntastic'                          " Syntactic checking
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }      " Go plugin
 Plug 'junegunn/fzf.vim'
 call plug#end()
@@ -170,3 +172,19 @@ let g:ycm_python_binary_path = '/usr/bin/python'
 au BufRead,BufNewFile *.gradle set filetype=groovy
 au BufNewFile,BufRead *.groovy  setf groovy
 au BufNewFile,BufRead *.gradle  setf groovy
+
+" Syntastic config start
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" let g:syntastic_quiet_messages = 1
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+" default in active mode.  
+let g:syntastic_mode_map = { "mode": "active", "active_filetypes": ["c"], "passive_filetypes": ["ruby"] }
+nmap <F9> :SyntasticCheck<CR>
+" Syntastic config end
