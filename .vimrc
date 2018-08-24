@@ -22,9 +22,15 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-fugitive'                               " Gdiff, Gw
 Plug 'airblade/vim-gitgutter'                           " git +/~ gutter
 Plug 'Chiel92/vim-autoformat'                           " AutoFormat
-Plug 'vim-syntastic/syntastic'                          " Syntactic checking
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }      " Go plugin
 Plug 'junegunn/fzf.vim'
+if v:version < 800
+  Plug 'vim-syntastic/syntastic'                          " Syntactic checking
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }      " Go plugin
+endif
+if v:version >= 800
+  Plug 'w0rp/ale'
+endif
+
 call plug#end()
 
 "set rtp+=~/.vim/bundle/Vundle.vim
@@ -173,18 +179,25 @@ au BufRead,BufNewFile *.gradle set filetype=groovy
 au BufNewFile,BufRead *.groovy  setf groovy
 au BufNewFile,BufRead *.gradle  setf groovy
 
-" Syntastic config start
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-" let g:syntastic_quiet_messages = 1
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_ruby_checkers = ['rubocop', 'mri']
-" default in active mode.  
-let g:syntastic_mode_map = { "mode": "active", "active_filetypes": ["c"], "passive_filetypes": ["ruby"] }
-nmap <F9> :SyntasticCheck<CR>
-" Syntastic config end
+if v:version < 800
+  " Syntastic config start
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+  " let g:syntastic_quiet_messages = 1
+  let g:syntastic_aggregate_errors = 1
+  let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+  " default in active mode.  
+  let g:syntastic_mode_map = { "mode": "active", "active_filetypes": ["c"], "passive_filetypes": ["ruby"] }
+  nmap <F9> :SyntasticCheck<CR>
+  " Syntastic config end
+endif
+
+if v:version >= 800
+  let g:ale_sign_column_always = 1
+  let g:airline#extensions#ale#enabled = 1
+endif
