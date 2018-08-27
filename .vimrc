@@ -39,30 +39,16 @@ call plug#end()
 " Plugin 'VundleVim/Vundle.vim'
 " to update, run :PluginUpdate
 " when adding new Plugin, run :PluginInstall
-" Plugin 'tpope/vim-fugitive'
 " Plugin 'Rip-Rip/clang_complete'  -- replacing clang_complete with youcompleteme
 " Plugin 'Valloric/YouCompleteMe'
-" Plugin 'scrooloose/nerdtree'
-" Plugin 'altercation/vim-colors-solarized'
-" Plugin 'majutsushi/tagbar'
 " Plugin 'vim-scripts/a.vim'
 "Plugin 'Align'
 "Plugin 'vim-scripts/Colour-Sampler-Pack'
 "Plugin 'vim-scripts/guicolorscheme.vim'
 "Plugin 'vim-scripts/c.vim'
 " Plugin 'fholgado/minibufexpl.vim'
-"Plugin 'Chiel92/vim-autoformat'
 "Plugin 'msanders/snipmate.vim'
-" Plugin 'Lokaltog/vim-powerline' " -- replacing with vim-airline
-" Plugin 'bling/vim-airline'      " -- vim-airline moved git and split themes
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'edkolev/tmuxline.vim'
-"use abolish as '%s' for %Subvert
-"Plugin 'tpope/tpope-vim-abolish'
-"Plugin 'ngmy/vim-rubocop'
-"Plugin 'kchmck/vim-coffee-script'
-"Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+"Plugin 'tpope/tpope-vim-abolish'               " use abolish as '%s' for %Subvert
 "call vundle#end()
 
 " NerdTree Toggle
@@ -82,7 +68,10 @@ colorscheme solarized
 let g:clang_complete_copen = 1
 let g:vimrubocop_config = '~/app/.rubocop.yml'
 let g:go_version_warning = 0
-
+" go_fmt_options fixes the below error
+" Error detected while processing function <SNR>73_fmt_autosave..go#fmt#Format..go#fmt#run..<SNR>115_fmt_cmd
+let g:go_fmt_options = 0
+ 
 "These settings will result in spaces being used for all indentation
 set expandtab
 set shiftwidth=2
