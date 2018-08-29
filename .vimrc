@@ -26,6 +26,7 @@ Plug 'junegunn/fzf.vim'
 if v:version < 800
   Plug 'vim-syntastic/syntastic'                          " Syntactic checking
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }      " Go plugin
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 endif
 if v:version >= 800
   Plug 'w0rp/ale'
@@ -170,9 +171,11 @@ au BufNewFile,BufRead *.gradle  setf groovy
 
 if v:version < 800
   " Syntastic config start
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
+  let g:airline#extensions#syntastic#enabled = 1
+  let airline#extensions#syntastic#error_symbol = 'E:'
+  let airline#extensions#syntastic#stl_format_err = '%E{[%e(#%fe)]}'
+  let airline#extensions#syntastic#warning_symbol = 'W:'
+  let airline#extensions#syntastic#stl_format_warn = '%W{[%w(#%fw)]}'
   let g:syntastic_always_populate_loc_list = 1
   let g:syntastic_auto_loc_list = 1
   let g:syntastic_check_on_open = 1
