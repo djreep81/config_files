@@ -22,7 +22,8 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-fugitive'                               " Gdiff, Gw
 Plug 'airblade/vim-gitgutter'                           " git +/~ gutter
 Plug 'Chiel92/vim-autoformat'                           " AutoFormat
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf.vim'                                 " vim fzf integration
+Plug 'ntpeters/vim-better-whitespace'                   " highlight whitespaces
 if v:version < 800
   Plug 'vim-syntastic/syntastic'                          " Syntactic checking
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }      " Go plugin
@@ -62,7 +63,7 @@ nmap <F6> :NERDTreeToggle<CR>
 syntax enable
 set background=dark
 " only use for mac
-" let g:solarized_termcolors=256 
+" let g:solarized_termcolors=256
 set t_Co=256
 colorscheme solarized
 
@@ -72,7 +73,7 @@ let g:go_version_warning = 0
 " go_fmt_options fixes the below error
 " Error detected while processing function <SNR>73_fmt_autosave..go#fmt#Format..go#fmt#run..<SNR>115_fmt_cmd
 let g:go_fmt_options = 0
- 
+
 "These settings will result in spaces being used for all indentation
 set expandtab
 set shiftwidth=2
@@ -186,7 +187,7 @@ if v:version < 800
   " let g:syntastic_quiet_messages = 1
   let g:syntastic_aggregate_errors = 1
   let g:syntastic_ruby_checkers = ['rubocop', 'mri']
-  " default in active mode.  
+  " default in active mode.
   let g:syntastic_mode_map = { "mode": "active", "active_filetypes": ["c"], "passive_filetypes": ["ruby"] }
   nmap <F9> :SyntasticCheck<CR>
   " Syntastic config end
