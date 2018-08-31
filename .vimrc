@@ -169,6 +169,9 @@ au BufRead,BufNewFile *.gradle set filetype=groovy
 au BufNewFile,BufRead *.groovy  setf groovy
 au BufNewFile,BufRead *.gradle  setf groovy
 
+" Mapping fzf
+map ; :Files<CR>
+
 if v:version < 800
   " Syntastic config start
   let g:airline#extensions#syntastic#enabled = 1
