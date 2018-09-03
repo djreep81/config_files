@@ -121,7 +121,8 @@ if !exists('g:airline_symbols')
 endif
 
 " tmuxline configuration that should modify tmux status line config file
-let g:tmuxline_preset = 'nightly_fox'
+" let g:tmuxline_preset = 'nightly_fox'
+let g:tmuxline_preset = "full"
 let g:airline#extensions#tmuxline#enabled = 1
 let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
 
