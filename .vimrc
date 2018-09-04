@@ -5,6 +5,7 @@ filetype off                   " required!
 syntax on                       " colors
 set encoding=utf-8
 
+let hostname = substitute(system('hostname'), '\n', '', '')
 " PlugUpdate (update plugins)
 " PlugUgrade (update plug itself)
 " PlugInstall (install new plugs)
@@ -24,13 +25,16 @@ Plug 'airblade/vim-gitgutter'                           " git +/~ gutter
 Plug 'Chiel92/vim-autoformat'                           " AutoFormat
 Plug 'junegunn/fzf.vim'                                 " vim fzf integration
 Plug 'ntpeters/vim-better-whitespace'                   " highlight whitespaces
+Plug 'tpope/vim-obsession'                              " continuously updated session files
 if v:version < 800
   Plug 'vim-syntastic/syntastic'                          " Syntactic checking
+else
+  Plug 'w0rp/ale'
+endif
+
+if hostname == "davidr-dev"
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }      " Go plugin
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-endif
-if v:version >= 800
-  Plug 'w0rp/ale'
 endif
 
 call plug#end()
@@ -122,10 +126,20 @@ endif
 
 " tmuxline configuration that should modify tmux status line config file
 " let g:tmuxline_preset = 'nightly_fox'
-let g:tmuxline_preset = "full"
+" let g:tmuxline_preset = "full"
 let g:airline#extensions#tmuxline#enabled = 1
 let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
-
+"
+let g:tmuxline_preset = {
+        \ 'a': '#S',
+        \ 'b': '#F',
+        \ 'c': '#W',
+        \ 'win': ['#I', '#W'],
+        \ 'cwin': ['#I', '#W'],
+        \ 'x': '%a',
+        \ 'y': ['%b %d', '%R', "#H"],
+        \ 'z': '#{cpu_bg_color} CPU: #{cpu_icon} #{cpu_percentage} '}
+" \ 'z': '#{tmux-mem-cpu-load} -q -g 5 --interval 2 '}
 
 " Tagbar to display functions/methods/etc
 nmap <F8> :TagbarToggle<CR>
@@ -198,3 +212,8 @@ if v:version >= 800
   let g:ale_sign_column_always = 1
   let g:airline#extensions#ale#enabled = 1
 endif
+
+augroup resCur
+  autocmd!
+  autocmd BufReadPost * call setpos(".", getpos("'\""))
+augroup END
