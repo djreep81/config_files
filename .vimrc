@@ -124,12 +124,9 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-" tmuxline configuration that should modify tmux status line config file
-" let g:tmuxline_preset = 'nightly_fox'
-" let g:tmuxline_preset = "full"
-let g:airline#extensions#tmuxline#enabled = 1
 let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
-"
+let g:airline#extensions#tmuxline#enabled = 0 " only enable once, then turn back to 0 once tmux-status.conf is written
+" manually move #{cpu_fg_color} after the airline generated colors in the .tmux-status.conf
 let g:tmuxline_preset = {
         \ 'a': '#S',
         \ 'b': '#F',
@@ -137,9 +134,8 @@ let g:tmuxline_preset = {
         \ 'win': ['#I', '#W'],
         \ 'cwin': ['#I', '#W'],
         \ 'x': '%a',
-        \ 'y': ['%b %d', '%R', "#H"],
-        \ 'z': '#{cpu_bg_color} CPU: #{cpu_icon} #{cpu_percentage} '}
-" \ 'z': '#{tmux-mem-cpu-load} -q -g 5 --interval 2 '}
+        \ 'y': ['%b %d', '%R', "#H #{cpu_fg_color}"],
+        \ 'z': '#{cpu_bg_color} CPU: #{cpu_percentage} '}
 
 " Tagbar to display functions/methods/etc
 nmap <F8> :TagbarToggle<CR>
@@ -164,6 +160,7 @@ map - <c-w>-
 
 " http://stackoverflow.com/questions/9166328/how-to-copy-selected-lines-to-clipboard-in-vim
 " using registers to copy between vim instances
+" set clipboard=unnamed
 set clipboard=unnamedplus
 
 set mouse=a
