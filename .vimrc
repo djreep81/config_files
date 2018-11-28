@@ -33,7 +33,7 @@ else
 endif
 
 if hostname == "davidr-dev"
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }      " Go plugin
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }      " Go plugin (:GoDef over type)
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 endif
 
@@ -77,6 +77,7 @@ let g:go_version_warning = 0
 " go_fmt_options fixes the below error
 " Error detected while processing function <SNR>73_fmt_autosave..go#fmt#Format..go#fmt#run..<SNR>115_fmt_cmd
 let g:go_fmt_options = 0
+let g:go_auto_type_info = 1
 
 "These settings will result in spaces being used for all indentation
 set expandtab
@@ -205,11 +206,17 @@ if v:version < 800
   " Syntastic config end
 endif
 
+" map leader to space key
+let mapleader="\<space>"
+
 if v:version >= 800
   let g:ale_sign_column_always = 1
   let g:airline#extensions#ale#enabled = 1
   let g:ale_sign_error = '✘'
   let g:ale_sign_warning = '⚠'
+  " move previous and next ale erorr lines
+  nmap <leader>an <Plug>(ale_next_wrap)
+  nmap <leader>ap <Plug>(ale_previous_wrap)
 endif
 
 augroup resCur
