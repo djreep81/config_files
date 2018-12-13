@@ -44,10 +44,10 @@ Plug 'ryanoasis/vim-devicons'                           " vim-devicons Must be l
 call plug#end()
 
 " testing rounded separators (extra-powerline-symbols):
-" let g:airline_left_sep = "\uE0B4"
-" let g:airline_right_sep = "\uE0B6"
-" let g:airline_left_alt_sep = "\uE0B5"
-" let g:airline_right_alt_sep = "\uE0B7"
+let g:airline_left_sep = "\uE0B4"
+let g:airline_right_sep = "\uE0B6"
+let g:airline_left_alt_sep = "\uE0B5"
+let g:airline_right_alt_sep = "\uE0B7"
 " flames
 " let g:airline_left_sep = "\uE0C0"
 " let g:airline_right_sep = "\uE0C2"
