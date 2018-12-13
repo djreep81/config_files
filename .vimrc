@@ -31,11 +31,28 @@ if v:version < 800
 else
   Plug 'w0rp/ale'
 endif
+Plug 'tpope/vim-obsession'                              " continuously updated session files
 
 if hostname == "davidr-dev"
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }      " Go plugin (:GoDef over type)
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }    " Go plugin (:GoDef over type)
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 endif
+Plug 'ryanoasis/vim-devicons'                           " vim-devicons Must be last plugin.
+" must have a powerline + nerdfont compatible (powerline extra)
+" recommend adobe source code pro + nerd fonts source code pro
+
+" testing rounded separators (extra-powerline-symbols):
+" let g:airline_left_sep = "\uE0B4"
+" let g:airline_right_sep = "\uE0B6"
+" flames
+" let g:airline_left_sep = "\uE0C0"
+" let g:airline_right_sep = "\uE0C2"
+
+" blocks
+let g:airline_left_sep = "\uE0C6"
+let g:airline_right_sep = "\uE0C7"
+
+
 
 call plug#end()
 
@@ -129,14 +146,14 @@ let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
 let g:airline#extensions#tmuxline#enabled = 0 " only enable once, then turn back to 0 once tmux-status.conf is written
 " manually move #{cpu_fg_color} after the airline generated colors in the .tmux-status.conf
 let g:tmuxline_preset = {
-        \ 'a': '#S',
-        \ 'b': '#F',
-        \ 'c': '#W',
-        \ 'win': ['#I', '#W'],
-        \ 'cwin': ['#I', '#W'],
-        \ 'x': '%a',
-        \ 'y': ['%b %d', '%R', "#H #{cpu_fg_color}"],
-        \ 'z': '#{cpu_bg_color} CPU: #{cpu_percentage} '}
+      \ 'a': '#S',
+      \ 'b': '#F',
+      \ 'c': '#W',
+      \ 'win': ['#I', '#W'],
+      \ 'cwin': ['#I', '#W'],
+      \ 'x': '%a',
+      \ 'y': ['%b %d', '%R', "#H #{cpu_fg_color}"],
+      \ 'z': '#{cpu_bg_color} CPU: #{cpu_percentage} '}
 
 " Tagbar to display functions/methods/etc
 nmap <F8> :TagbarToggle<CR>
