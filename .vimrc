@@ -41,20 +41,30 @@ Plug 'ryanoasis/vim-devicons'                           " vim-devicons Must be l
 " must have a powerline + nerdfont compatible (powerline extra)
 " recommend adobe source code pro + nerd fonts source code pro
 
+call plug#end()
+
 " testing rounded separators (extra-powerline-symbols):
 " let g:airline_left_sep = "\uE0B4"
 " let g:airline_right_sep = "\uE0B6"
+" let g:airline_left_alt_sep = "\uE0B5"
+" let g:airline_right_alt_sep = "\uE0B7"
 " flames
 " let g:airline_left_sep = "\uE0C0"
 " let g:airline_right_sep = "\uE0C2"
-
 " blocks
-let g:airline_left_sep = "\uE0C6"
-let g:airline_right_sep = "\uE0C7"
+" let g:airline_left_sep = "\uE0C6"
+" let g:airline_right_sep = "\uE0C7"
+" to get the symbols run below:
+" echo $'\uE0C7'
 
+let g:airline_symbols = {
+      \ 'right': '',
+      \ 'right_alt': '',
+      \ 'left': '',
+      \ 'left_alt': '' }
 
-
-call plug#end()
+let g:promptline_symbols = g:airline_symbols
+let g:tmuxline_separators = g:airline_symbols
 
 "set rtp+=~/.vim/bundle/Vundle.vim
 "call vundle#begin()
