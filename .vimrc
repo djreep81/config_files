@@ -34,7 +34,7 @@ endif
 Plug 'tpope/vim-obsession'                              " continuously updated session files
 
 if hostname == "davidr-dev"
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }    " Go plugin (:GoDef over type)
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' , 'tag': 'v1.19' }    " Go plugin (:GoDef over type)
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 endif
 Plug 'ryanoasis/vim-devicons'                           " vim-devicons Must be last plugin.
