@@ -1,6 +1,27 @@
 #
 # ~/.bashrc_common
 #
+
+# Files Overview
+# .bashrc - interactive non-login shells (or subshells)
+# .bash_profile - read at login only bash shell
+# .profile - read at login many by shells
+# *tmux can reload login shells (if login command bash -l), each time which needs to be corrected
+
+# .profile
+# .profile is for things that are not specifically related to Bash, like environment variables PATH and friends, and should be available anytime.
+#  For example, .profile should also be loaded when starting a graphical desktop session.
+
+# .bashrc
+# .bashrc is for the configuring the interactive Bash usage, like Bash aliases, setting your favorite editor, setting the Bash prompt, etc.
+
+# .bash_profile
+# .bash_profile is for making sure that both the things in .profile and .bashrc are loaded for login shells.
+# For example, .bash_profile could be something simple like
+#   . ~/.profile
+#   . ~/.bashrc
+# If you were to omit .bash_profile, only .profile would be loaded.
+
 ########################################
 # Add the following to your .bashrc
 ########################################
