@@ -26,12 +26,13 @@ Plug 'Chiel92/vim-autoformat'                           " AutoFormat
 Plug 'junegunn/fzf.vim'                                 " vim fzf integration
 Plug 'ntpeters/vim-better-whitespace'                   " highlight whitespaces
 Plug 'tpope/vim-obsession'                              " continuously updated session files
+Plug 'tpope/tpope-vim-abolish'                          " use abolish as '%s' for %Subvert
+Plug 'tpope/vim-obsession'                              " continuously updated session files
 if v:version < 800
   Plug 'vim-syntastic/syntastic'                          " Syntactic checking
 else
   Plug 'w0rp/ale'
 endif
-Plug 'tpope/vim-obsession'                              " continuously updated session files
 
 if hostname == "davidr-dev"
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' , 'tag': 'v1.19' }    " Go plugin (:GoDef over type)
