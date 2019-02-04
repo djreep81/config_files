@@ -256,3 +256,8 @@ augroup resCur
   autocmd!
   autocmd BufReadPost * call setpos(".", getpos("'\""))
 augroup END
+
+augroup HamlJS
+  autocmd BufNewFile,BufRead *.hamljs set ft=haml
+  autocmd BufNewFile,BufRead *.hamlbars set ft=haml
+augroup END
