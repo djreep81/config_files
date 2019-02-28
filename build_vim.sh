@@ -4,8 +4,10 @@
 git clone https://github.com/vim/vim.git
 
 cd vim
+git pull
 # git checkout tags/v8.1.0525
-git checkout tags/v8.1.0617
+# git checkout tags/v8.1.0617
+git checkout tags/v8.1.0985
 
 ./configure \
   --disable-nls \
@@ -33,8 +35,8 @@ cd -
 git clone https://github.com/neovim/neovim.git
 
 cd neovim
-
-git checkout tags/v0.3.1
+git pull
+git checkout tags/v0.3.4
 make distclean
 make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=/home/wti/.local/neovim/"
 make install
@@ -44,6 +46,7 @@ make install
 git clone https://github.com/tmux/tmux.git
 
 cd tmux
+git pull
 git checkout tags/2.8
 ./autogen.sh
 ./configure --prefix=/home/wti/.local/tmux

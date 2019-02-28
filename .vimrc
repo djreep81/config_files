@@ -35,7 +35,8 @@ else
 endif
 
 if hostname == "davidr-dev"
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' , 'tag': 'v1.19' }    " Go plugin (:GoDef over type)
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' , 'tag': 'v1.19' }    " Go plugin (:GoDef over type)
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }    " Go plugin (:GoDef over type)
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 endif
 Plug 'ryanoasis/vim-devicons'                           " vim-devicons Must be last plugin.
@@ -194,8 +195,8 @@ map - <c-w>-
 
 " http://stackoverflow.com/questions/9166328/how-to-copy-selected-lines-to-clipboard-in-vim
 " using registers to copy between vim instances
-" set clipboard=unnamed
-set clipboard=unnamedplus
+" set clipboard=unnamed "sets the default copy register to be *
+set clipboard=unnamedplus "sets the default copy register to be +
 
 set mouse=a
 
