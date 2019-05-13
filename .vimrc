@@ -39,11 +39,15 @@ Plug 'tpope/vim-obsession'                              " continuously updated s
 Plug 'tpope/tpope-vim-abolish'                          " use abolish as '%s' for %Subvert
 Plug 'tpope/vim-obsession'                              " continuously updated session files
 " Plug 'terryma/vim-multiple-cursors'
+Plug 'octol/vim-cpp-enhanced-highlight'                 " additional c++11/14/17 highlighting
+Plug 'ludovicchabant/vim-lawrencium'                    " Mercurial alternative to fugitive
+Plug 'mhinz/vim-signify'                                " alternative to gitgutter that supports git, mercurial, darcs, bazaar, subversion, cvs
 if v:version < 800
   Plug 'vim-syntastic/syntastic'                          " Syntactic checking
 else
   Plug 'w0rp/ale'
 endif
+Plug 'tpope/vim-obsession'                              " continuously updated session files
 
 if hostname == "davidr-dev"
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' , 'tag': 'v1.19' }    " Go plugin (:GoDef over type) Go 1.10
@@ -54,8 +58,12 @@ endif
 Plug 'ryanoasis/vim-devicons'                           " vim-devicons Must be last plugin.
 " must have a powerline + nerdfont compatible (powerline extra)
 " recommend adobe source code pro + nerd fonts source code pro
-
 call plug#end()
+
+if hostname == "we-laptop84.local"
+  " for homebrew fzf + fzf plugin
+  set rtp+=/usr/local/opt/fzf
+end
 
 "set rtp+=~/.vim/bundle/Vundle.vim
 "call vundle#begin()
@@ -264,6 +272,15 @@ if v:version >= 800
   nmap <leader>an <Plug>(ale_next_wrap)
   nmap <leader>ap <Plug>(ale_previous_wrap)
 endif
+
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_experimental_simple_template_highlight = 1
+" let g:cpp_experimental_template_highlight = 1
+let g:cpp_concepts_highlight = 1
+" let g:cpp_no_function_highlight = 1
+let c_no_curly_error=1
 
 augroup resCur
   autocmd!
