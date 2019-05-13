@@ -47,7 +47,7 @@ git clone https://github.com/tmux/tmux.git
 
 cd tmux
 git pull
-git checkout tags/2.8
+git checkout tags/2.9
 ./autogen.sh
 ./configure --prefix=/home/wti/.local/tmux
 make && make install
@@ -58,3 +58,6 @@ chmod a+x ~/.bash_completion.d/tmux
 # show the bash completion files
 # locate bash_completion
 
+git clone --depth 1 https://github.com/cjbassi/gotop /tmp/gotop
+/tmp/gotop/scripts/download.sh
+mv gotop ~/bin/

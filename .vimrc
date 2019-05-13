@@ -4,12 +4,22 @@ set noro
 filetype off                   " required!
 syntax on                       " colors
 set encoding=utf-8
+" MacOS
+set guifont=DroidSansMono_Nerd_Font:h11
+" Linux
+" set guifont=DroidSansMono\ Nerd\ Font\ 11
+
 
 let hostname = substitute(system('hostname'), '\n', '', '')
 " PlugUpdate (update plugins)
 " PlugUgrade (update plug itself)
 " PlugInstall (install new plugs)
 call plug#begin()
+"  if empty(glob('~/.vim/autoload/plug.vim'))
+"   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+"  endif
+
 Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdtree'
 Plug 'altercation/vim-colors-solarized'                 " solar theme
@@ -28,6 +38,7 @@ Plug 'ntpeters/vim-better-whitespace'                   " highlight whitespaces
 Plug 'tpope/vim-obsession'                              " continuously updated session files
 Plug 'tpope/tpope-vim-abolish'                          " use abolish as '%s' for %Subvert
 Plug 'tpope/vim-obsession'                              " continuously updated session files
+" Plug 'terryma/vim-multiple-cursors'
 if v:version < 800
   Plug 'vim-syntastic/syntastic'                          " Syntactic checking
 else
@@ -35,8 +46,9 @@ else
 endif
 
 if hostname == "davidr-dev"
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' , 'tag': 'v1.19' }    " Go plugin (:GoDef over type)
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }    " Go plugin (:GoDef over type)
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' , 'tag': 'v1.19' }    " Go plugin (:GoDef over type) Go 1.10
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' , 'tag': 'v1.20' }    " Go plugin (:GoDef over type) Go 1.12
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }    " Go plugin (:GoDef over type)
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 endif
 Plug 'ryanoasis/vim-devicons'                           " vim-devicons Must be last plugin.
@@ -132,10 +144,10 @@ let g:airline_powerline_fonts = 1
 let g:airline_symbols = {
       \ 'right': '',
       \ 'right_alt': '',
-      \ 'left': '  ',
+      \ 'left': ' ',
       \ 'left_alt': '' }
 
-let g:airline_left_sep = '  '
+let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
@@ -262,3 +274,12 @@ augroup HamlJS
   autocmd BufNewFile,BufRead *.hamljs set ft=haml
   autocmd BufNewFile,BufRead *.hamlbars set ft=haml
 augroup END
+
+
+" Itegerate vim with ripgrep + fzf as defined here: https://github.com/junegunn/fzf.vim
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \              : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)

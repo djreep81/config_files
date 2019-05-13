@@ -155,7 +155,7 @@ function __promptline {
   fi
   local wrap="$noprint$esc" end_wrap="$end_esc$end_noprint"
   local space=" "
-  local sep="  "
+  local sep=" "
   local rsep=""
   local alt_sep=""
   local alt_rsep=""
