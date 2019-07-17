@@ -42,6 +42,7 @@ Plug 'tpope/vim-obsession'                              " continuously updated s
 Plug 'octol/vim-cpp-enhanced-highlight'                 " additional c++11/14/17 highlighting
 Plug 'ludovicchabant/vim-lawrencium'                    " Mercurial alternative to fugitive
 Plug 'mhinz/vim-signify'                                " alternative to gitgutter that supports git, mercurial, darcs, bazaar, subversion, cvs
+Plug 'vim-scripts/groovyindent-unix'                    " Groovy syntax
 if v:version < 800
   Plug 'vim-syntastic/syntastic'                          " Syntactic checking
 else
@@ -292,6 +293,7 @@ augroup HamlJS
   autocmd BufNewFile,BufRead *.hamlbars set ft=haml
 augroup END
 
+let g:gitgutter_async = 1
 
 " Itegerate vim with ripgrep + fzf as defined here: https://github.com/junegunn/fzf.vim
 command! -bang -nargs=* Rg
