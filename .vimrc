@@ -31,7 +31,7 @@ Plug 'edkolev/promptline.vim'                           " writes to .promptline.
 Plug 'ngmy/vim-rubocop'
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-fugitive'                               " Gdiff, Gw
-Plug 'airblade/vim-gitgutter'                           " git +/~ gutter
+Plug 'airblade/vim-gitgutter'                           " git +/~ gutter  -> https://github.com/airblade/vim-gitgutter#hunks
 Plug 'Chiel92/vim-autoformat'                           " AutoFormat
 Plug 'junegunn/fzf.vim'                                 " vim fzf integration
 Plug 'ntpeters/vim-better-whitespace'                   " highlight whitespaces
@@ -240,6 +240,7 @@ au BufNewFile,BufRead *.gradle  setf groovy
 
 " Mapping fzf
 map ; :Files<CR>
+map ' :Rg<CR>
 
 if v:version < 800
   " Syntastic config start
