@@ -43,6 +43,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'                 " additional c++11/14/17
 Plug 'ludovicchabant/vim-lawrencium'                    " Mercurial alternative to fugitive
 Plug 'mhinz/vim-signify'                                " alternative to gitgutter that supports git, mercurial, darcs, bazaar, subversion, cvs
 Plug 'vim-scripts/groovyindent-unix'                    " Groovy syntax
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 if v:version < 800
   Plug 'vim-syntastic/syntastic'                          " Syntactic checking
 else
