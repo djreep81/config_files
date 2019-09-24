@@ -218,8 +218,12 @@ map - <c-w>-
 " http://stackoverflow.com/questions/9166328/how-to-copy-selected-lines-to-clipboard-in-vim
 " using registers to copy between vim instances
 " set clipboard=unnamed "sets the default copy register to be *
-set clipboard=unnamedplus "sets the default copy register to be +
-
+" set clipboard=unnamedplus "sets the default copy register to be +
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
 set mouse=a
 
 " YCM configuration
