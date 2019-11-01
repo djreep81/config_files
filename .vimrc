@@ -62,6 +62,10 @@ Plug 'ryanoasis/vim-devicons'                           " vim-devicons Must be l
 " recommend adobe source code pro + nerd fonts source code pro
 call plug#end()
 
+" java support via coc via :CocInstall coc-java (installs jdt.ls)
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
 if hostname == "we-laptop84.local"
   " for homebrew fzf + fzf plugin
   set rtp+=/usr/local/opt/fzf
