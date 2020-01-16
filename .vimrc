@@ -44,6 +44,7 @@ Plug 'ludovicchabant/vim-lawrencium'                    " Mercurial alternative 
 Plug 'mhinz/vim-signify'                                " alternative to gitgutter that supports git, mercurial, darcs, bazaar, subversion, cvs
 Plug 'vim-scripts/groovyindent-unix'                    " Groovy syntax
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'scrooloose/nerdcommenter'
 if v:version < 800
   Plug 'vim-syntastic/syntastic'                          " Syntactic checking
 else
@@ -304,6 +305,12 @@ augroup HamlJS
 augroup END
 
 let g:gitgutter_async = 1
+
+" Fugitive
+" Gstatus within nerdree to start the diff
+" :G? - shows all mappings
+" - will stage/unstage, = expand file, enter - open H editor, gO - open V split editor, dv - vimdiff
+nnoremap <leader>gs :edit . \| Gstatus \| only<CR>
 
 " Itegerate vim with ripgrep + fzf as defined here: https://github.com/junegunn/fzf.vim
 command! -bang -nargs=* Rg

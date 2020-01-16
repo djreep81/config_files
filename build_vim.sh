@@ -39,7 +39,7 @@ git clone https://github.com/neovim/neovim.git
 
 cd neovim
 git pull
-git checkout tags/v0.4.2
+git checkout tags/v0.4.3
 make distclean
 make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=/home/wti/.local/neovim/"
 make install
@@ -50,7 +50,7 @@ git clone https://github.com/tmux/tmux.git
 
 cd tmux
 git pull
-git checkout tags/2.9a
+git checkout tags/3.0a
 ./autogen.sh
 ./configure --prefix=/home/wti/.local/tmux
 make && make install
