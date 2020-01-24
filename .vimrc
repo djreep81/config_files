@@ -8,7 +8,7 @@ set encoding=utf-8
 " set guifont=DroidSansMono_Nerd_Font:h11
 " Linux
 " set guifont=DroidSansMono\ Nerd\ Font\ 11
-
+set guifont=Source\ Code\ Pro\ for\ Powerline "make sure to escape the spaces in the name properly (light works the best for spacing)
 
 let hostname = substitute(system('hostname'), '\n', '', '')
 " PlugUpdate (update plugins)
@@ -153,37 +153,23 @@ noremap <F7> :Autoformat<CR>
 " Must install powerline fonts to add proper charachters (even for airline) as described below
 " http://powerline.readthedocs.org/en/latest/installation/linux.html#fonts-installation
 " let g:Powerline_symbols = 'fancy'
-"let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-"let g:airline_symbols = {
-"      \ 'right': '',
-"      \ 'right_alt': '',
-"      \ 'left': ' ',
-"      \ 'left_alt': '' }
-
-"let g:airline_left_sep = ' '
-"let g:airline_left_alt_sep = ''
-"let g:airline_right_sep = ''
-"let g:airline_right_alt_sep = ''
-
-" testing rounded separators (extra-powerline-symbols):
-" let g:airline_left_sep = "\uE0B4"
-" let g:airline_right_sep = "\uE0B6"
-" let g:airline_left_alt_sep = "\uE0B5"
-" let g:airline_right_alt_sep = "\uE0B7"
-" flames
-" let g:airline_left_sep = "\uE0C0\u0020"
-" let g:airline_right_sep = "\uE0C2\u0020\u2009"
-" let g:airline_left_alt_sep = "\uE0C1"
-" let g:airline_right_alt_sep = "\uE0C3"
-" blocks
-" let g:airline_left_sep = "\uE0C6"
-" let g:airline_right_sep = "\uE0C7"
 " to get the symbols run below:
 " echo $'\uE0C7'
 
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.dirty= '⚡'
 let g:airline_theme='solarized'
 let g:promptline_symbols = g:airline_symbols
 let g:tmuxline_separators = g:airline_symbols
