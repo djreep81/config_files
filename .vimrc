@@ -5,7 +5,7 @@ filetype off                   " required!
 syntax on                       " colors
 set encoding=utf-8
 " MacOS
-set guifont=DroidSansMono_Nerd_Font:h11
+" set guifont=DroidSansMono_Nerd_Font:h11
 " Linux
 " set guifont=DroidSansMono\ Nerd\ Font\ 11
 
@@ -21,7 +21,8 @@ call plug#begin()
 "  endif
 
 Plug 'tpope/vim-sensible'
-Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-vinegar'                                " using netrw replacing nerdtree
+" Plug 'scrooloose/nerdtree'
 Plug 'altercation/vim-colors-solarized'                 " solar theme
 Plug 'majutsushi/tagbar'                                " tag file structure
 Plug 'vim-airline/vim-airline'
@@ -39,22 +40,17 @@ Plug 'tpope/vim-obsession'                              " continuously updated s
 Plug 'tpope/tpope-vim-abolish'                          " use abolish as '%s' for %Subvert
 Plug 'tpope/vim-obsession'                              " continuously updated session files
 " Plug 'terryma/vim-multiple-cursors'
-Plug 'octol/vim-cpp-enhanced-highlight'                 " additional c++11/14/17 highlighting
+" Plug 'octol/vim-cpp-enhanced-highlight'                 " additional c++11/14/17 highlighting
 Plug 'ludovicchabant/vim-lawrencium'                    " Mercurial alternative to fugitive
 Plug 'mhinz/vim-signify'                                " alternative to gitgutter that supports git, mercurial, darcs, bazaar, subversion, cvs
 Plug 'vim-scripts/groovyindent-unix'                    " Groovy syntax
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'scrooloose/nerdcommenter'
-if v:version < 800
-  Plug 'vim-syntastic/syntastic'                          " Syntactic checking
-else
-  Plug 'w0rp/ale'
-endif
+Plug 'w0rp/ale'
 Plug 'tpope/vim-obsession'                              " continuously updated session files
-
 if hostname == "davidr-dev"
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' , 'tag': 'v1.19' }    " Go plugin (:GoDef over type) Go 1.10
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' , 'tag': 'v1.20' }    " Go plugin (:GoDef over type) Go 1.12
+  " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' , 'tag': 'v1.19' }    " Go plugin (:GoDef over type) Go 1.10
+  " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' , 'tag': 'v1.20' }    " Go plugin (:GoDef over type) Go 1.12
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }    " Go plugin (:GoDef over type)
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 endif
@@ -91,7 +87,9 @@ end
 "call vundle#end()
 
 " NerdTree Toggle
-nmap <F6> :NERDTreeToggle<CR>
+" nmap <F6> :NERDTreeToggle<CR>
+" Vinegar Toggle
+nmap <F6> :Lexplore<CR>
 "ctl t toggles nerdtree
 "nmap <silent> <c-t> :NERDTreeToggle<CR>
 "start nerdtree at startup of vim
@@ -103,6 +101,9 @@ set background=dark
 " let g:solarized_termcolors=256
 set t_Co=256
 colorscheme solarized
+
+" map leader to space key
+let mapleader="\<space>"
 
 let g:clang_complete_copen = 1
 let g:vimrubocop_config = '~/app/.rubocop.yml'
@@ -152,20 +153,20 @@ noremap <F7> :Autoformat<CR>
 " Must install powerline fonts to add proper charachters (even for airline) as described below
 " http://powerline.readthedocs.org/en/latest/installation/linux.html#fonts-installation
 " let g:Powerline_symbols = 'fancy'
-let g:airline_powerline_fonts = 1
-"if !exists('g:airline_symbols')
-"  let g:airline_symbols = {}
-"endif
-let g:airline_symbols = {
-      \ 'right': '',
-      \ 'right_alt': '',
-      \ 'left': ' ',
-      \ 'left_alt': '' }
+"let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+"let g:airline_symbols = {
+"      \ 'right': '',
+"      \ 'right_alt': '',
+"      \ 'left': ' ',
+"      \ 'left_alt': '' }
 
-let g:airline_left_sep = ' '
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
+"let g:airline_left_sep = ' '
+"let g:airline_left_alt_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_right_alt_sep = ''
 
 " testing rounded separators (extra-powerline-symbols):
 " let g:airline_left_sep = "\uE0B4"
@@ -197,7 +198,7 @@ let g:tmuxline_preset = {
       \ 'cwin': ['#I', '#W'],
       \ 'x': '%a',
       \ 'y': ['%b %d', '%R', "#H #{cpu_fg_color}"],
-      \ 'z': '#{cpu_bg_color} CPU: #{cpu_percentage} '}
+      \ 'z': ['#{network_bandwidth}', '#{weather}', '#{cpu_bg_color} CPU: #{cpu_percentage}']}
 
 " Tagbar to display functions/methods/etc
 nmap <F8> :TagbarToggle<CR>
@@ -231,18 +232,6 @@ else
 endif
 set mouse=a
 
-" YCM configuration
-let g:ycm_confirm_extra_conf = 0
-"this file should be copied into each project or follow https://jonasdevlieghere.com/a-better-youcompleteme-config
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-" let g:ycm_server_python_interpreter
-let g:ycm_python_binary_path = '/usr/bin/python'
-" after vundle update of YouCompleteMe you must rebuild
-" cd ~/.vim/bundle/YouCompleteMe
-" ./install.py --clang-completer
-" Use the below to force using clang completer
-" ./install.py --clang-completer --system-libclang
-
 " filetypes
 au BufRead,BufNewFile *.gradle set filetype=groovy
 au BufNewFile,BufRead *.groovy  setf groovy
@@ -252,38 +241,14 @@ au BufNewFile,BufRead *.gradle  setf groovy
 map ; :Files<CR>
 map ' :Rg<CR>
 
-if v:version < 800
-  " Syntastic config start
-  let g:airline#extensions#syntastic#enabled = 1
-  let airline#extensions#syntastic#error_symbol = 'E:'
-  let airline#extensions#syntastic#stl_format_err = '%E{[%e(#%fe)]}'
-  let airline#extensions#syntastic#warning_symbol = 'W:'
-  let airline#extensions#syntastic#stl_format_warn = '%W{[%w(#%fw)]}'
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
-  " let g:syntastic_quiet_messages = 1
-  let g:syntastic_aggregate_errors = 1
-  let g:syntastic_ruby_checkers = ['rubocop', 'mri']
-  " default in active mode.
-  let g:syntastic_mode_map = { "mode": "active", "active_filetypes": ["c"], "passive_filetypes": ["ruby"] }
-  nmap <F9> :SyntasticCheck<CR>
-  " Syntastic config end
-endif
-
-" map leader to space key
-let mapleader="\<space>"
-
-if v:version >= 800
-  let g:ale_sign_column_always = 1
-  let g:airline#extensions#ale#enabled = 1
-  let g:ale_sign_error = '✘'
-  let g:ale_sign_warning = '⚠'
-  " move previous and next ale erorr lines
-  nmap <leader>an <Plug>(ale_next_wrap)
-  nmap <leader>ap <Plug>(ale_previous_wrap)
-endif
+" ale configuration
+let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+" move previous and next ale erorr lines
+nmap <leader>an <Plug>(ale_next_wrap)
+nmap <leader>ap <Plug>(ale_previous_wrap)
 
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
