@@ -32,7 +32,7 @@ Plug 'edkolev/promptline.vim'                           " writes to .promptline.
 Plug 'ngmy/vim-rubocop'
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-fugitive'                               " Gdiff, Gw
-Plug 'airblade/vim-gitgutter'                           " git +/~ gutter  -> https://github.com/airblade/vim-gitgutter#hunks
+Plug 'airblade/vim-gitgutter'                           " git +/~ gutter
 Plug 'Chiel92/vim-autoformat'                           " AutoFormat
 Plug 'junegunn/fzf.vim'                                 " vim fzf integration
 Plug 'ntpeters/vim-better-whitespace'                   " highlight whitespaces
@@ -268,6 +268,9 @@ augroup HamlJS
   autocmd BufNewFile,BufRead *.hamljs set ft=haml
   autocmd BufNewFile,BufRead *.hamlbars set ft=haml
 augroup END
+
+autocmd BufNewFile,BufRead *.cmake.in set ft=cmake
+autocmd BufNewFile,BufRead *.gradle.in set ft=gradle
 
 let g:gitgutter_async = 1
 
