@@ -48,6 +48,7 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-obsession'                              " continuously updated session files
+" Plug 'msanders/snipmate.vim'
 if hostname == "davidr-dev"
   " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' , 'tag': 'v1.19' }    " Go plugin (:GoDef over type) Go 1.10
   " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' , 'tag': 'v1.20' }    " Go plugin (:GoDef over type) Go 1.12
@@ -67,24 +68,6 @@ if hostname == "we-laptop84.local"
   " for homebrew fzf + fzf plugin
   set rtp+=/usr/local/opt/fzf
 end
-
-"set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#begin()
-" let Vundle manage Vundle, required
-" Plugin 'VundleVim/Vundle.vim'
-" to update, run :PluginUpdate
-" when adding new Plugin, run :PluginInstall
-" Plugin 'Rip-Rip/clang_complete'  -- replacing clang_complete with youcompleteme
-" Plugin 'Valloric/YouCompleteMe'
-" Plugin 'vim-scripts/a.vim'
-"Plugin 'Align'
-"Plugin 'vim-scripts/Colour-Sampler-Pack'
-"Plugin 'vim-scripts/guicolorscheme.vim'
-"Plugin 'vim-scripts/c.vim'
-" Plugin 'fholgado/minibufexpl.vim'
-"Plugin 'msanders/snipmate.vim'
-"Plugin 'tpope/tpope-vim-abolish'               " use abolish as '%s' for %Subvert
-"call vundle#end()
 
 " NerdTree Toggle
 " nmap <F6> :NERDTreeToggle<CR>
