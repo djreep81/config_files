@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for configFileName in ".tmux.conf" ".tmux-status.conf" ".vimrc" ".inputrc" ".bashrc_common" ".promptline.sh" "alacritty.yml"; do
+for configFileName in ".tmux.conf" ".tmux-status.conf" ".vimrc" ".inputrc" ".bashrc_common" ".zshrc_common" ".promptline.sh" "alacritty.yml"; do
 	echo "~/${configFileName}"
 	if [[ -f ~/${configFileName} ]]; then
 		echo -e "rm ~/$configFileName"

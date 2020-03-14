@@ -1,0 +1,5 @@
+export EDITOR="vim"
+
+if [ -f  ~/.promptline.sh ]; then
+  source ~/.promptline.sh
+fi
