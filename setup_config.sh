@@ -24,3 +24,17 @@ echo -e "mkdir -p $HOME/${alacritty_dir}"
 mkdir -p $HOME/${alacritty_dir}
 echo -e "ln -s $PWD/${alacritty_file} $HOME/${alacritty_dir}${alacritty_file}"
 ln -s $PWD/${alacritty_file} $HOME/${alacritty_dir}${alacritty_file}
+
+
+alacritty_dir=".config/nvim/"
+alacritty_file="init.vim"
+if [[ -f ~/${alacritty_dir}${alacritty_file} ]]; then
+        echo -e "rm ~/${alacritty_dir}${alacritty_file}"
+        rm ~/${alacritty_dir}${alacritty_file}
+else
+        echo -e "~/${alacritty_dir}${alacritty_file} does not exist"
+fi
+echo -e "mkdir -p $HOME/${alacritty_dir}"
+mkdir -p $HOME/${alacritty_dir}
+echo -e "ln -s $PWD/${alacritty_file} $HOME/${alacritty_dir}${alacritty_file}"
+ln -s $PWD/${alacritty_file} $HOME/${alacritty_dir}${alacritty_file}
