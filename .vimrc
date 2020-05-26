@@ -49,17 +49,17 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'w0rp/ale'
 Plug 'tpope/vim-obsession'                              " continuously updated session files
 " Plug 'msanders/snipmate.vim'
-if hostname == "davidr-dev"
+if (hostname == "davidr-dev") || (hostname == "ddjrcmb01.we.aws.we.aws")
   " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' , 'tag': 'v1.19' }    " Go plugin (:GoDef over type) Go 1.10
   " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' , 'tag': 'v1.20' }    " Go plugin (:GoDef over type) Go 1.12
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }    " Go plugin (:GoDef over type)
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 endif
-if hostname == "we-laptop84.local" || hostname == "we-laptop84"
+if (hostname == "we-laptop84.local") || (hostname == "we-laptop84")
   " for homebrew fzf + fzf plugin
   Plug '/usr/local/opt/fzf'
   " set rtp+=/usr/local/opt/fzf " not needed since using plug
-end
+endif
 Plug 'ryanoasis/vim-devicons'                           " vim-devicons Must be last plugin.
 " must have a powerline + nerdfont compatible (powerline extra)
 " recommend adobe source code pro + nerd fonts source code pro

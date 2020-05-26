@@ -41,7 +41,7 @@ cd neovim
 git pull
 git checkout tags/v0.4.3
 make distclean
-make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=/home/wti/.local/neovim/"
+make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=/home/wti/.local/" CMAKE_BUILD_TYPE="RelWithDebInfo"
 make install
 
 #tmux
@@ -50,9 +50,9 @@ git clone https://github.com/tmux/tmux.git
 
 cd tmux
 git pull
-git checkout tags/3.0a
+git checkout tags/3.1b
 ./autogen.sh
-./configure --prefix=/home/wti/.local/tmux
+./configure --prefix=/home/wti/.local
 make && make install
 
 wget https://raw.githubusercontent.com/imomaliev/tmux-bash-completion/master/completions/tmux -O ~/.bash_completion.d/tmux
