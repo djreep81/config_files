@@ -24,6 +24,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'                                " using netrw replacing nerdtree
 " Plug 'scrooloose/nerdtree'
 Plug 'altercation/vim-colors-solarized'                 " solar theme
+Plug 'dracula/vim', { 'as': 'dracula' }                 " dracula theme
 Plug 'majutsushi/tagbar'                                " tag file structure
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -78,11 +79,14 @@ nmap <F6> :Lexplore<CR>
 "au VimEnter *  NERDTree
 
 syntax enable
-set background=dark
 " only use for mac
 " let g:solarized_termcolors=256
-set t_Co=256
-colorscheme solarized
+" for soloarized uncomment the next 3
+" set background=dark
+" set t_Co=256
+"colorscheme solarized
+set termguicolors
+colorscheme dracula
 
 " map leader to space key
 let mapleader="\<space>"
@@ -152,7 +156,8 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.dirty= '⚡'
-let g:airline_theme='solarized'
+let g:airline_theme='dracula'
+let g:promptline_theme = 'airline'
 let g:promptline_symbols = g:airline_symbols
 let g:tmuxline_separators = g:airline_symbols
 let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
