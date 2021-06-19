@@ -81,12 +81,15 @@ nmap <F6> :Lexplore<CR>
 syntax enable
 " only use for mac
 " let g:solarized_termcolors=256
-" for soloarized uncomment the next 3
-" set background=dark
-" set t_Co=256
-"colorscheme solarized
+set background=dark
+set t_CO=256
 set termguicolors
+"colorscheme solarized
 colorscheme dracula
+
+" support colors from vim within tmux
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " map leader to space key
 let mapleader="\<space>"
